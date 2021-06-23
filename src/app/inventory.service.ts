@@ -32,6 +32,16 @@ export class InventoryService {
    getCharacterInventory(): Observable<any>{
     return this.http.get<any>('https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018451545226/Character/2305843009262335627?components=CharacterEquipment,ItemSockets'   , this.httpOptions).pipe(catchError(this.handleError));
   }
+   equipItem(): Observable<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'X-API-Key': '8e66dfa160d24a67aa33dfe141c95468',
+      })
+    }; 
+    
+    return this.http.post<any>('https://www.bungie.net/Platform/Destiny2/Manifest/',  httpOptions).pipe(catchError(this.handleError));
+   }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
