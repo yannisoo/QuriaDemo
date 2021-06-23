@@ -1,0 +1,6 @@
+<div *ngFor="let item of equippedItemsInstance">
+       <img src="https://bungie.net/{{item.display.displayProperties.icon}}" alt=""> {{item.display.displayProperties.name}}
+       <div *ngFor="let mod of item.mod"> 
+        <img src="https://bungie.net/{{mod.displayProperties.icon}}" alt=""> {{mod.displayProperties.name}} 
+       </div>
+</div>
