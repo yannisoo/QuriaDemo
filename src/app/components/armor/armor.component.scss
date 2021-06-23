@@ -1,0 +1,70 @@
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.armor-list-detailed {
+    width: 50vw;
+    margin-top: 12vh;
+    overflow-y: scroll;
+}
+
+.armor-item{
+    width: auto;
+    height: 1200px;
+    padding: 0 2% 5% 2%;
+}
+
+.armor-details {
+    width: 50vw;
+    margin: 12vh 0 8vh 0;
+    background-color: green;
+}
+
+.armor-list-detailed::-webkit-scrollbar {
+    width: 2px;
+}
+  
+.armor-list-detailed::-webkit-scrollbar-track {
+    background: darkgrey; 
+}
+   
+.armor-list-detailed::-webkit-scrollbar-thumb {
+    background: white; 
+}
+  
+.armor-list-detailed::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.armor-stats {
+    height: 30vh;
+    width: auto;
+    padding: 0 5%;
+    background-color: yellow;
+}
+.armor-tips {
+    height: 46vh;
+    width: auto;
+    margin-top: 5%;
+    padding: 0 5%;
+    background-color: purple;
+    overflow-y: scroll;
+}
+
+.armor-tips::-webkit-scrollbar {
+    width: 2px;
+}
+  
+.armor-tips::-webkit-scrollbar-track {
+    background: darkgrey; 
+}
+   
+.armor-tips::-webkit-scrollbar-thumb {
+    background: white; 
+}
+  
+.armor-tips::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}

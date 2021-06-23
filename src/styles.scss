@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: url(./assets/background/background.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100% ;
+}
