@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'armor', component: ArmorComponent },
   { path: 'login', component: LoginComponent },
   { path: '', component: TestComponent },
-
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
