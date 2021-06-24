@@ -1,15 +1,30 @@
 <div class="container">
     <div class="armor-list-detailed">
-        <div class="armor-item">
-
+        <div *ngFor="let item of equippedItemsInstance" class='armor-item-details'>
+            <img src="https://bungie.net/{{item.display.displayProperties.icon}}" alt="" class="item">
+            <div *ngFor="let mod of item.mod" class="item-mods">
+                <img src="https://bungie.net/{{mod.displayProperties.icon}}" alt="" class="mods">
+            </div>
         </div>
     </div>
     <div class="armor-details">
         <div class="armor-stats">
-
+            <div *ngFor="let item of equippedItemsInstance" class='item-overview'>
+                <img src="https://bungie.net/{{item.display.displayProperties.icon}}" alt="">
+            </div>
+        </div>
+        <div class="button">
+            <button [class.isActive]="status == 'PVE'">Recommendations PVE</button>
+            <button [class.isActive]="status == 'PVP'">Recommendations PVP</button>
         </div>
         <div class="armor-tips">
-            
+            <div class="armor-reco">
+                <p>- Casque: {{reco.helmet}}</p>
+                <p>- Bras: {{reco.gauntlet}}</p>
+                <p>- Torse: {{reco.chest}}</p>
+                <p>- Bottes: {{reco.boots}}</p>
+                <button style="display: flex; justify-content: center; width: 100%;" (click)="equip()">Optimiser</button>
+            </div>
         </div>
     </div>
 </div>

@@ -32,18 +32,32 @@ export class TestComponent implements OnInit {
   currentPrimary: any;
   currentSpecial: any;
   reco: any;
+  toBeTransfered: any;
+  transferId: any;
 
   WeaponObj:any;
 
   ngOnInit(): void {
-    // this.getToken()
+    this.getToken()
     this.getManifests()
     if( localStorage.getItem('access_token') == undefined)
     {
       this.getToken()
     }
-    this. getCharacters()
+    this.getCharacters()
+    
   }
+
+
+
+  equip(){
+    console.log('on mappellelovni')
+    this.inventory.equipItems(this.toBeTransfered).subscribe((response) => {});
+  }
+
+
+
+  
   getToken(){
     this.route.queryParamMap.subscribe((params) => {
       this.returned = { ...params.keys, ...params };
@@ -88,6 +102,8 @@ export class TestComponent implements OnInit {
         this.equippedItemsInstance = []
         this.character = []
         this.weapons = []
+        this.toBeTransfered = []
+        this.transferId = []
         for (let Character in response.Response.characterEquipment.data){
           this.character.push(Character)
         }
@@ -105,9 +121,21 @@ export class TestComponent implements OnInit {
           }
         }
         console.log(this.weapons)
+        for (let i in response.Response.characterInventories.data[this.character[0]].items){
+          console.log(response.Response.characterInventories.data[this.character[0]].items[i])
+          if(response.Response.characterInventories.data[this.character[0]].items[i].itemHash == 3627185503 || response.Response.characterInventories.data[this.character[0]].items[i].itemHash == 1721938300 || response.Response.characterInventories.data[this.character[0]].items[i].itemHash == 2304861612 || response.Response.characterInventories.data[this.character[0]].items[i].itemHash == 469005214 ) {
+            this.toBeTransfered.push(response.Response.characterInventories.data[this.character[0]].items[i].itemInstanceId)
+          }
+        }
+        
+        console.log(this.toBeTransfered)
+
         this.hellOnEarth()
       });
   });
+  }
+  cheapCheat(){
+    
   }
   getItemInfo(item: any){
     

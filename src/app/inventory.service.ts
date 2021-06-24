@@ -27,20 +27,19 @@ export class InventoryService {
   }
   getProfile(primarymember: any): Observable<any>{
 
-    return this.http.get<any>('https://www.bungie.net/Platform/Destiny2/2/Profile/' + primarymember +'/?components=CharacterEquipment,ItemSockets'   , this.httpOptions).pipe(catchError(this.handleError));
+    return this.http.get<any>('https://www.bungie.net/Platform/Destiny2/2/Profile/' + primarymember +'/?components=CharacterEquipment,ItemSockets,Characters,CharacterInventories,ItemInstances'   , this.httpOptions).pipe(catchError(this.handleError));
   }
    getCharacterInventory(): Observable<any>{
-    return this.http.get<any>('https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018451545226/Character/2305843009262335627?components=CharacterEquipment,ItemSockets'   , this.httpOptions).pipe(catchError(this.handleError));
+    return this.http.get<any>('https://www.bungie.net/Platform/Destiny2/2/Profile/4611686018451545226/Character/2305843009262335627?components=CharacterEquipment,ItemSockets,CharacterInventories'   , this.httpOptions).pipe(catchError(this.handleError));
   }
-   equipItem(): Observable<any>{
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type':  'application/json',
-        'X-API-Key': '8e66dfa160d24a67aa33dfe141c95468',
-      })
-    }; 
-    
-    return this.http.post<any>('https://www.bungie.net/Platform/Destiny2/Manifest/',  httpOptions).pipe(catchError(this.handleError));
+  
+   equipItems(list: any): Observable<any>{
+    const body = {
+      characterId: "2305843009262335627",
+      membershipType: 2,
+      itemIds:  list
+    }
+    return this.http.post<any>('https://www.bungie.net/Platform/Destiny2/Actions/Items/EquipItems/', body , this.httpOptions).pipe(catchError(this.handleError));
    }
 
   private handleError(error: HttpErrorResponse) {
